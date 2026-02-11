@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>주소 정제 대시보드</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="app-body" data-job-id="{{ job_id }}">
+  <header class="topbar">
+    <div>
+      <h1>주소 정제 대시보드</h1>
+      <p class="subtext">접속 계정: <strong>{{ username }}</strong></p>
+    </div>
+    <form method="post" action="/logout">
+      <button type="submit" class="secondary">로그아웃</button>
+    </form>
+  </header>
+
+  <main class="panel">
+    <section class="row">
+      <input id="fileInput" type="file" accept=".xlsx">
+      <button id="uploadBtn">업로드</button>
+      <span id="fileName" class="muted">업로드된 파일 없음</span>
+    </section>
+
+    <section class="row vertical">
+      <label>진행률</label>
+      <progress id="progressBar" value="0" max="100"></progress>
+      <span id="progressText">0% (0/0)</span>
+    </section>
+
+    <section class="row vertical">
+      <label>상태</label>
+      <div id="statusBox" class="status-box">로그인 후 파일을 업로드하세요.</div>
+    </section>
+
+    <section class="row">
+      <button id="startBtn">시작</button>
+      <button id="stopBtn" class="secondary" disabled>중지</button>
+      <button id="downloadBtn" class="secondary" disabled>다운로드</button>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
